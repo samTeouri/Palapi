@@ -6,7 +6,7 @@ import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakatra.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -31,7 +31,7 @@ public class Pal {
     private List<String> types = new ArrayList<>();
 
     @ElementCollection
-    private List<String> suitability = new ArrayList<>();
+    private List<Suitability> suitability = new ArrayList<>();
 
     @ElementCollection
     private List<String> drops = new ArrayList<>();
@@ -47,4 +47,7 @@ public class Pal {
     private double price;
 
     private String size;
+
+
+
 }
