@@ -1,4 +1,4 @@
-package com.tp_spring.palapi.model;
+package com.tp_spring.palapi.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
