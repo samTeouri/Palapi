@@ -44,6 +44,11 @@ public class PalService {
         return pal.getSkills();
     }
 
+    public void AddPalSkill(Pal pal, Skill skill){
+        pal.getSkills().add(skill);
+    }
+
+
     public List<String> getPalTypes(Pal pal){
         return pal.getTypes();
     }
