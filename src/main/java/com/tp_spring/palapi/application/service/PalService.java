@@ -44,4 +44,21 @@ public class PalService {
         return pal.getSkills();
     }
 
+    public List<String> getPalTypes(Pal pal){
+        return pal.getTypes();
+    }
+
+    public void AddPalType(Pal pal,String type){   
+        pal.getTypes().add(type);
+    }
+
+    public void RemovePalType(Pal pal, String type){
+            pal.getTypes().remove(type);
+    }
+
+    public List<Pal> getAllPalsSortedByPrice() {
+        return palRepository.findAllSortedByPrice();
+    }
+
+    
 }
