@@ -1,4 +1,5 @@
-package com.tp_spring.palapi.model;
+package com.tp_spring.palapi.domain;
+
 
 public class Attack {
     private int melee;
