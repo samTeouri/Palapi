@@ -75,7 +75,7 @@ public class Pal {
         return this.cle;
     }
 
-    public void setKey(String key) {
+    public void setKey(String cle) {
         this.cle = cle;
     }
 

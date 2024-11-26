@@ -1,7 +1,5 @@
 package com.tp_spring.palapi.domain;
 
-import jakarta.persistence.Embeddable;
-
 
 public class Attack {
     private int melee;
