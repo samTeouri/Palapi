@@ -1,13 +1,20 @@
 package com.tp_spring.palapi.domain;
 
+import jakarta.persistence.Embedded;
+
 public class Stats {
+    
     private int hp;
-    private Attack attack;
-    private int defense;
-    private Speed speed;
     private int stamina;
     private int support;
     private String food;
+    private int defense;
+
+    @Embedded
+    private Attack attack;
+    
+    @Embedded
+    private Speed speed;
 
     public Stats(int hp, Attack attack, int defense, Speed speed, int stamina, int support, String food) {
         this.hp = hp;

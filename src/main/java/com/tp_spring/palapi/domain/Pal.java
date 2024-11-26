@@ -20,7 +20,7 @@ public class Pal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    private String key;
+    private String cle;
     private String name;
     private String wiki;
     private String rarity;
@@ -29,6 +29,7 @@ public class Pal {
     private List<String> types = new ArrayList<>();
     private List<String> drops = new ArrayList<>();
     
+    @Embedded
     @ElementCollection
     private List<Suitability> suitability = new ArrayList<>();
 
@@ -40,7 +41,7 @@ public class Pal {
 
     // Constructor
     public Pal(
-        String _key,
+        String _cle,
         String _name,
         String _wiki,
         String _rarity,
@@ -52,7 +53,7 @@ public class Pal {
         List<Skill> _skills,
         Stats _stats
         ) {
-            this.key = _key;
+            this.cle = _cle;
             this.name = _name;
             this.wiki = _wiki;
             this.rarity = _rarity;
@@ -71,11 +72,11 @@ public class Pal {
     }
 
     public String getKey() {
-        return this.key;
+        return this.cle;
     }
 
     public void setKey(String key) {
-        this.key = key;
+        this.cle = cle;
     }
 
     public String getName() {
