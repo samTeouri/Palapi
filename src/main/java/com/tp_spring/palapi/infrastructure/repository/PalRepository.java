@@ -10,5 +10,5 @@ import com.tp_spring.palapi.domain.Pal;
 @Repository
 public interface PalRepository extends JpaRepository<Pal, Long> {
     List<Pal> findByName(String name);
-    List<Pal> findByType(String type);
+    List<Pal> findByTypes(List<String> types);
 }
