@@ -1,4 +1,4 @@
-package com.tp_spring.palapi.models;
+package com.tp_spring.palapi.domain;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.ElementCollection;
