@@ -56,8 +56,8 @@ public class PalService {
             pal.getTypes().remove(type);
     }
 
-    public List<Pal> getAllPalsSortedByPrice(Double price) {
-        return palRepository.findAllSortedByPrice(price);
+    public List<Pal> getAllPalsSortedByPrice() {
+        return palRepository.findAllSortedByPrice();
     }
 
     
