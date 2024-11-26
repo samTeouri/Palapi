@@ -65,6 +65,96 @@ public class Pal {
             this.stats = _stats;
     }
 
+    // Getters and Setters
+    public Long getId() {
+        return this.id;
+    }
 
+    public String getKey() {
+        return this.key;
+    }
 
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getWiki() {
+        return this.wiki;
+    }
+
+    public void setWiki(String wiki) {
+        this.wiki = wiki;
+    }
+
+    public List<String> getTypes() {
+        return this.types;
+    }
+
+    public void setTypes(List<String> types) {
+        this.types = types;
+    }
+
+    public List<Suitability> getSuitability() {
+        return this.suitability;
+    }
+
+    public void setSuitability(List<Suitability> suitability) {
+        this.suitability = suitability;
+    }
+
+    public List<String> getDrops() {
+        return this.drops;
+    }
+
+    public void setDrops(List<String> drops) {
+        this.drops = drops;
+    }
+
+    public List<Skill> getSkills() {
+        return this.skills;
+    }
+
+    public void setSkills(List<Skill> skills) {
+        this.skills = skills;
+    }
+
+    public Stats getStats() {
+        return this.stats;
+    }
+
+    public void setStats(Stats stats) {
+        this.stats = stats;
+    }
+
+    public String getRarity() {
+        return this.rarity;
+    }
+
+    public void setRarity(String rarity) {
+        this.rarity = rarity;
+    }
+
+    public double getPrice() {
+        return this.price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public String getSize() {
+        return this.size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
 }
