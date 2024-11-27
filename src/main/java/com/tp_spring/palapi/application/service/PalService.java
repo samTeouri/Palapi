@@ -48,6 +48,22 @@ public class PalService {
         pal.getSkills().add(skill);
     }
 
+    public void updatePalSkill(Pal pal, Skill oldSkill, Skill newSkill) {
+        List<Skill> skills = pal.getSkills();
+        int index = skills.indexOf(oldSkill);
+    
+        if (index != -1) {
+            skills.set(index, newSkill);
+        } else {
+            throw new IllegalArgumentException("Skill not found in the Pal's skill list.");
+        }
+    }
+    
+    public void updatePalSkillAndSave(Pal pal, Skill oldSkill, Skill newSkill) {
+        updatePalSkill(pal, oldSkill, newSkill);
+        palRepository.save(pal);
+    }
+    
 
     public List<String> getPalTypes(Pal pal){
         return pal.getTypes();
@@ -65,5 +81,8 @@ public class PalService {
         return palRepository.findAllSortedByPrice();
     }
 
+    public List<Pal> getAllPalsSortedByRarity() {
+        return palRepository.findAllSortedByRarity();
+    }    
     
 }
