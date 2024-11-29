@@ -69,7 +69,7 @@ public class PalService {
         return pal.getTypes();
     }
 
-    public void AddPalType(Pal pal,String type){   
+    public void AddPalType(Pal pal, String type){   
         pal.getTypes().add(type);
     }
 
