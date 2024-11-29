@@ -1,5 +1,8 @@
 package com.tp_spring.palapi.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Embedded;
@@ -9,9 +12,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name="pals")
@@ -23,7 +23,7 @@ public class Pal {
     private String cle;
     private String name;
     private String wiki;
-    private String rarity;
+    private int rarity;
     private double price;
     private String size;
     private List<String> types = new ArrayList<>();
@@ -44,7 +44,7 @@ public class Pal {
         String _cle,
         String _name,
         String _wiki,
-        String _rarity,
+        int _rarity,
         double _price,
         String _size,
         List<String> _types,
@@ -135,11 +135,11 @@ public class Pal {
         this.stats = stats;
     }
 
-    public String getRarity() {
+    public int getRarity() {
         return this.rarity;
     }
 
-    public void setRarity(String rarity) {
+    public void setRarity(int rarity) {
         this.rarity = rarity;
     }
 
