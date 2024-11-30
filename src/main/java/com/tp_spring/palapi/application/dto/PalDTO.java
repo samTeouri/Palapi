@@ -6,16 +6,16 @@ public class PalDTO {
     private Long id;
     private String name;
     private List<String> types;
-    private String rarity;
+    private int rarity;
     private Double price;
     private String size;
 
-    // Constructeur sans arguments (nécessaire pour la sérialisation)
+    // Constructeur sans arguments
     public PalDTO() {
     }
 
     // Constructeur avec tous les arguments
-    public PalDTO(Long id, String name, List<String> types, String rarity, Double price, String size) {
+    public PalDTO(Long id, String name, List<String> types, int rarity, Double price, String size) {
         this.id = id;
         this.name = name;
         this.types = types;
@@ -49,11 +49,11 @@ public class PalDTO {
         this.types = types;
     }
 
-    public String getRarity() {
+    public int getRarity() {
         return rarity;
     }
 
-    public void setRarity(String rarity) {
+    public void setRarity(int rarity) {
         this.rarity = rarity;
     }
 
