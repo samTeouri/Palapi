@@ -21,7 +21,6 @@ public class PalService {
         this.palRepository = _palRepository;
     }
 
-
     public List<PalDTO> getAllPals() {
         return palRepository.findAll().stream()
                 .map(pal -> DTOMapper.mapToDTO(pal))
@@ -34,8 +33,10 @@ public class PalService {
         return DTOMapper.mapToDTO(pal);
     }
 
-    public List<Pal> getPalByName(String name) {
-        return palRepository.findByName(name);
+    public List<PalDTO> getPalByName(String name) {
+        return palRepository.findByName(name).stream()
+                .map(pal -> DTOMapper.mapToDTO(pal))
+                .collect(Collectors.toList());
     }
 
     public List<Pal> getPalByTypes(List<String> types) {
