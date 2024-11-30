@@ -1,5 +1,7 @@
 package com.tp_spring.palapi.web;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +19,11 @@ public class PalController {
 
     public PalController(PalService palService) {
         this.palService = palService;
+    }
+
+    @GetMapping
+    public ResponseEntity<List<PalDTO>> getAllPals() {
+        return ResponseEntity.ok(palService.getAllPals());
     }
 
     @GetMapping("/{id}")
