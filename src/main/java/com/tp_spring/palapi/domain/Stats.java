@@ -16,6 +16,10 @@ public class Stats {
     @Embedded
     private Speed speed;
 
+    public Stats() {
+        
+    }
+
     public Stats(int hp, Attack attack, int defense, Speed speed, int stamina, int support, String food) {
         this.hp = hp;
         this.attack = attack;
