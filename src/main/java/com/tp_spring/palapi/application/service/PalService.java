@@ -39,8 +39,8 @@ public class PalService {
                 .collect(Collectors.toList());
     }
 
-    public List<PalDTO> getPalsByType(String type) {
-        return palRepository.findByType(type).stream()
+    public List<PalDTO> getPalsByTypes(List<String> types) {
+        return palRepository.findByTypes(types).stream()
                 .map(pal -> DTOMapper.mapToDTO(pal))
                 .collect(Collectors.toList());
     }
