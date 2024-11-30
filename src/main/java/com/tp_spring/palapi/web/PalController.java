@@ -33,6 +33,11 @@ public class PalController {
         return ResponseEntity.ok(palService.getPalById(id));
     }
 
+    @GetMapping("/name/{name}")
+    public ResponseEntity<List<PalDTO>> getPalByName(@PathVariable String name) {
+        return ResponseEntity.ok(palService.getPalByName(name));
+    }
+
     @PostMapping
     public ResponseEntity<PalDTO> createPal(@RequestBody PalDTO palDTO) {
         return ResponseEntity.ok(palService.createPal(palDTO));
