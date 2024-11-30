@@ -34,8 +34,13 @@ public class PalController {
     }
 
     @GetMapping("/name/{name}")
-    public ResponseEntity<List<PalDTO>> getPalByName(@PathVariable String name) {
-        return ResponseEntity.ok(palService.getPalByName(name));
+    public ResponseEntity<List<PalDTO>> getPalsByName(@PathVariable String name) {
+        return ResponseEntity.ok(palService.getPalsByName(name));
+    }
+
+    @GetMapping("/type/{type}")
+    public ResponseEntity<List<PalDTO>> getPalsByType(@PathVariable String type) {
+        return ResponseEntity.ok(palService.getPalsByType(type));
     }
 
     @PostMapping

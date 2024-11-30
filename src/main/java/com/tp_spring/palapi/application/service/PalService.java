@@ -33,14 +33,14 @@ public class PalService {
         return DTOMapper.mapToDTO(pal);
     }
 
-    public List<PalDTO> getPalByName(String name) {
+    public List<PalDTO> getPalsByName(String name) {
         return palRepository.findByName(name).stream()
                 .map(pal -> DTOMapper.mapToDTO(pal))
                 .collect(Collectors.toList());
     }
 
-    public List<PalDTO> getPalByTypes(List<String> types) {
-        return palRepository.findByTypes(types).stream()
+    public List<PalDTO> getPalsByType(String type) {
+        return palRepository.findByType(type).stream()
                 .map(pal -> DTOMapper.mapToDTO(pal))
                 .collect(Collectors.toList());
     }
