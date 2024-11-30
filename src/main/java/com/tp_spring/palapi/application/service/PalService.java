@@ -2,6 +2,7 @@ package com.tp_spring.palapi.application.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -20,8 +21,11 @@ public class PalService {
         this.palRepository = _palRepository;
     }
 
-    public List<Pal> getAllPals() {
-        return palRepository.findAll();
+
+    public List<PalDTO> getAllPals() {
+        return palRepository.findAll().stream()
+                .map(pal -> DTOMapper.mapToDTO(pal))
+                .collect(Collectors.toList());
     }
 
     public PalDTO getPalById(Long id) {
