@@ -1,7 +1,6 @@
 package com.tp_spring.palapi.infrastructure.tools;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 import com.tp_spring.palapi.application.dto.PalDTO;
 import com.tp_spring.palapi.domain.Pal;
@@ -26,7 +25,7 @@ public class DTOMapper {
         );
     }
 
-    private Pal mapToEntity(PalDTO palDTO) {
+    public static Pal mapToEntity(PalDTO palDTO) {
         Pal pal = new Pal();
         pal.setName(palDTO.getName());
         pal.setTypes(palDTO.getTypes());

@@ -45,8 +45,10 @@ public class PalService {
                 .collect(Collectors.toList());
     }
 
-    public Pal createPal(Pal pal) {
-        return palRepository.save(pal);
+    public PalDTO createPal(PalDTO palDTO) {
+        Pal pal = DTOMapper.mapToEntity(palDTO);
+        pal = palRepository.save(pal);
+        return palDTO;
     }
 
     public List<Skill> getPalSkills(Pal pal) {
