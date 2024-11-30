@@ -11,13 +11,12 @@ import com.tp_spring.palapi.domain.Pal;
 @Repository
 public interface PalRepository extends JpaRepository<Pal, Long> {
     List<Pal> findByName(String name);
-    List<Pal> findByTypes(List<String> types);
+    List<Pal> findByType(String type);
 
     @Query("SELECT p FROM Pal p ORDER BY p.price ASC")
     List<Pal> findAllSortedByPrice();
 
     @Query("SELECT p FROM Pal p ORDER BY p.rarity ASC")
     List<Pal> findAllSortedByRarity();
-
 
 }

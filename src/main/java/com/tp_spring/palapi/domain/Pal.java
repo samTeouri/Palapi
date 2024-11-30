@@ -40,6 +40,10 @@ public class Pal {
     private Stats stats;
 
     // Constructor
+    public Pal() {
+
+    }
+
     public Pal(
         String _cle,
         String _name,

@@ -2,42 +2,53 @@ package com.tp_spring.palapi.application.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tp_spring.palapi.application.dto.PalDTO;
 import com.tp_spring.palapi.domain.Pal;
 import com.tp_spring.palapi.domain.Skill;
 import com.tp_spring.palapi.infrastructure.repository.PalRepository;
+import com.tp_spring.palapi.infrastructure.tools.DTOMapper;
 
 @Service
 public class PalService {
 
     private PalRepository palRepository;
 
-    @Autowired
     public PalService(PalRepository _palRepository) {
         this.palRepository = _palRepository;
     }
 
-    public List<Pal> getAllPals() {
-        return palRepository.findAll();
+    public List<PalDTO> getAllPals() {
+        return palRepository.findAll().stream()
+                .map(pal -> DTOMapper.mapToDTO(pal))
+                .collect(Collectors.toList());
     }
 
-    public Optional<Pal> getPalById(Long id) {
-        return palRepository.findById(id);
+    public PalDTO getPalById(Long id) {
+        Pal pal = palRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Pal not found"));
+        return DTOMapper.mapToDTO(pal);
     }
 
-    public List<Pal> getPalByName(String name) {
-        return palRepository.findByName(name);
+    public List<PalDTO> getPalsByName(String name) {
+        return palRepository.findByName(name).stream()
+                .map(pal -> DTOMapper.mapToDTO(pal))
+                .collect(Collectors.toList());
     }
 
-    public List<Pal> getPalByTypes(List<String> types) {
-        return palRepository.findByTypes(types);
+    public List<PalDTO> getPalsByType(String type) {
+        return palRepository.findByType(type).stream()
+                .map(pal -> DTOMapper.mapToDTO(pal))
+                .collect(Collectors.toList());
     }
 
-    public Pal createPal(Pal pal) {
-        return palRepository.save(pal);
+    public PalDTO createPal(PalDTO palDTO) {
+        Pal pal = DTOMapper.mapToEntity(palDTO);
+        pal = palRepository.save(pal);
+        return palDTO;
     }
 
     public List<Skill> getPalSkills(Pal pal) {

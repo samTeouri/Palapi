@@ -19,6 +19,10 @@ public class Skill {
     private int power;
     private String description;
 
+    public Skill() {
+        
+    }
+    
     public Skill(int level, String name, String type, int cooldown, int power, String description) {
         this.level = level;
         this.name = name;
