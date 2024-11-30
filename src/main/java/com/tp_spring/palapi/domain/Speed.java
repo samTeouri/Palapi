@@ -1,9 +1,14 @@
 package com.tp_spring.palapi.domain;
 
 public class Speed {
+
     private int ride;
     private int run;
     private int walk;
+
+    public Speed() {
+        
+    }
 
     public Speed(int ride, int run, int walk) {
         this.ride = ride;

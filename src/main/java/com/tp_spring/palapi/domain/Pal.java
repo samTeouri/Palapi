@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -21,11 +22,22 @@ public class Pal {
     private Long id;
     
     private String cle;
+
+    @Column(insertable=false, updatable=false)
     private String name;
+    
     private String wiki;
     private int rarity;
     private double price;
     private String size;
+    private String image;
+    private String imageWiki;
+
+    @Column(insertable=false, updatable=false)
+    private String description;
+    
+    private String asset;
+    private String genus;
     private List<String> types = new ArrayList<>();
     private List<String> drops = new ArrayList<>();
     
@@ -39,6 +51,12 @@ public class Pal {
     @Embedded
     private Stats stats;
 
+    @Embedded
+    private Aura aura;
+
+    @Embedded
+    private Maps maps;
+
     // Constructor
     public Pal() {
 
@@ -51,11 +69,18 @@ public class Pal {
         int _rarity,
         double _price,
         String _size,
+        String _image,
+        String _imageWiki,
+        String _description,
+        String _asset,
+        String _genus,
         List<String> _types,
         List<String> _drops,
         List<Suitability> _suitability,
         List<Skill> _skills,
-        Stats _stats
+        Stats _stats,
+        Aura _aura,
+        Maps _maps
         ) {
             this.cle = _cle;
             this.name = _name;
@@ -63,11 +88,18 @@ public class Pal {
             this.rarity = _rarity;
             this.price = _price;
             this.size = _size;
+            this.image = _image;
+            this.image = _imageWiki;
+            this.description = _description;
+            this.asset = _asset;
+            this.genus = _genus;
             this.types = _types;
             this.drops = _drops;
             this.suitability = _suitability;
             this.skills = _skills;
             this.stats = _stats;
+            this.aura = _aura;
+            this.maps = _maps;
     }
 
     // Getters and Setters
@@ -139,6 +171,22 @@ public class Pal {
         this.stats = stats;
     }
 
+    public Aura getAura() {
+        return this.aura;
+    }
+
+    public void setAura(Aura aura) {
+        this.aura = aura;
+    }
+
+    public Maps getMaps() {
+        return this.maps;
+    }
+
+    public void setMaps(Maps maps) {
+        this.maps = maps;
+    }
+
     public int getRarity() {
         return this.rarity;
     }
@@ -161,5 +209,45 @@ public class Pal {
 
     public void setSize(String size) {
         this.size = size;
+    }
+
+    public String getImage() {
+        return this.image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getImageWiki() {
+        return this.imageWiki;
+    }
+
+    public void setImageWiki(String imageWiki) {
+        this.imageWiki = imageWiki;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getAsset() {
+        return this.asset;
+    }
+
+    public void setAsset(String asset) {
+        this.asset = asset;
+    }
+
+    public String getGenus() {
+        return this.genus;
+    }
+
+    public void setGenus(String genus) {
+        this.genus = genus;
     }
 }
