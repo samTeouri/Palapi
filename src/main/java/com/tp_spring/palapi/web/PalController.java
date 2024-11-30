@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,5 +31,10 @@ public class PalController {
     @GetMapping("/{id}")
     public ResponseEntity<PalDTO> getPalById(@PathVariable Long id) {
         return ResponseEntity.ok(palService.getPalById(id));
+    }
+
+    @PostMapping
+    public ResponseEntity<PalDTO> createPal(@RequestBody PalDTO palDTO) {
+        return ResponseEntity.ok(palService.createPal(palDTO));
     }
 }
