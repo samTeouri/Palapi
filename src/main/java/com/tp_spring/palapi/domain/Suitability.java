@@ -3,10 +3,16 @@ package com.tp_spring.palapi.domain;
 public class Suitability {
     private String type;
     private int level;
+    private String image;
 
-    public Suitability(String type, int level) {
-        this.type = type;
-        this.level = level;
+    public Suitability() {
+        
+    }
+
+    public Suitability(String _type, int _level, String _image) {
+        this.type = _type;
+        this.level = _level;
+        this.image = _image;
     }
 
     public String getType() {
@@ -23,5 +29,13 @@ public class Suitability {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

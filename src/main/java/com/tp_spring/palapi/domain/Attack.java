@@ -2,8 +2,13 @@ package com.tp_spring.palapi.domain;
 
 
 public class Attack {
+
     private int melee;
     private int ranged;
+
+    public Attack() {
+
+    }
 
     public Attack(int melee, int ranged) {
         this.melee = melee;

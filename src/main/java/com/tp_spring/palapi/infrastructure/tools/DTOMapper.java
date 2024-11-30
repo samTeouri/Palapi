@@ -3,6 +3,8 @@ package com.tp_spring.palapi.infrastructure.tools;
 import java.util.ArrayList;
 
 import com.tp_spring.palapi.application.dto.PalDTO;
+import com.tp_spring.palapi.domain.Aura;
+import com.tp_spring.palapi.domain.Maps;
 import com.tp_spring.palapi.domain.Pal;
 import com.tp_spring.palapi.domain.Skill;
 import com.tp_spring.palapi.domain.Stats;
@@ -37,7 +39,14 @@ public class DTOMapper {
         pal.setSkills(new ArrayList<Skill>());
         pal.setSuitability(new ArrayList<Suitability>());
         pal.setStats(new Stats());
+        pal.setAura(new Aura());
         pal.setWiki(null);
+        pal.setImage(null);
+        pal.setImageWiki(null);
+        pal.setDescription(null);
+        pal.setAsset(null);
+        pal.setGenus(null);
+        pal.setMaps(new Maps());
         return pal;
     }
 }
