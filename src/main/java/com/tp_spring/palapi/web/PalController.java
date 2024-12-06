@@ -47,4 +47,22 @@ public class PalController {
     public ResponseEntity<PalDTO> createPal(@RequestBody PalDTO palDTO) {
         return ResponseEntity.ok(palService.createPal(palDTO));
     }
+
+
+   /*  @GetMapping("/{id}/skills")
+    public ResponseEntity<List<Skill>> getPalSkills(@PathVariable Long id) {
+    Pal pal = DTOMapper.mapToEntity(palService.getPalById(id));
+    return ResponseEntity.ok(palService.getPalSkills(pal));
+    }
+
+     @GetMapping("/sorted/price")
+    public ResponseEntity<List<Pal>> getAllPalsSortedByPrice() {
+        return ResponseEntity.ok(palService.getAllPalsSortedByPrice());
+    }
+
+    @GetMapping("/sorted/rarity")
+    public ResponseEntity<List<Pal>> getAllPalsSortedByRarity() {
+        return ResponseEntity.ok(palService.getAllPalsSortedByRarity());
+    }
+    */
 }
