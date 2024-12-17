@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tp_spring.palapi.application.dto.PalDTO;
 import com.tp_spring.palapi.application.service.PalService;
+import com.tp_spring.palapi.domain.Pal;
+import com.tp_spring.palapi.domain.Skill;
+import com.tp_spring.palapi.infrastructure.tools.DTOMapper;
 
 @RestController
 @RequestMapping("/api/pals")
@@ -23,28 +26,73 @@ public class PalController {
         this.palService = palService;
     }
 
+
     @GetMapping
     public ResponseEntity<List<PalDTO>> getAllPals() {
         return ResponseEntity.ok(palService.getAllPals());
     }
 
+    //get pal par id
     @GetMapping("/{id}")
     public ResponseEntity<PalDTO> getPalById(@PathVariable Long id) {
         return ResponseEntity.ok(palService.getPalById(id));
     }
 
+    //get pal par name
     @GetMapping("/name/{name}")
     public ResponseEntity<List<PalDTO>> getPalsByName(@PathVariable String name) {
         return ResponseEntity.ok(palService.getPalsByName(name));
     }
 
+    //get pals par type (a coriger)
     @GetMapping("/type/{type}")
     public ResponseEntity<List<PalDTO>> getPalsByTypes(@PathVariable List<String> types) {
         return ResponseEntity.ok(palService.getPalsByTypes(types));
     }
 
+    //save new pal
     @PostMapping
     public ResponseEntity<PalDTO> createPal(@RequestBody PalDTO palDTO) {
         return ResponseEntity.ok(palService.createPal(palDTO));
     }
+
+    //get skill pal
+    @GetMapping("/{id}/skills")
+    public ResponseEntity<List<Skill>> getPalSkills(@PathVariable Long id) {
+    Pal pal = DTOMapper.mapToEntity(palService.getPalById(id));
+    return ResponseEntity.ok(palService.getPalSkills(pal));
+    }
+
+    //a corriger
+    @GetMapping("/sorted/price")
+    public ResponseEntity<List<Pal>> getAllPalsSortedByPrice() {
+        return ResponseEntity.ok(palService.getAllPalsSortedByPrice());
+    }
+
+    //a corriger
+    @GetMapping("/sorted/rarity")
+    public ResponseEntity<List<Pal>> getAllPalsSortedByRarity() {
+        return ResponseEntity.ok(palService.getAllPalsSortedByRarity());
+    }
+    
+    //add skill a un pal
+    @PostMapping("/{id}/skill")
+    public ResponseEntity<Skill> addSkillToPal(@PathVariable Long id, @RequestBody Skill skill) {
+        Skill addedSkill = palService.addSkillToPal(id, skill);
+        return ResponseEntity.ok(addedSkill);
+    }
+
+    //add types d'un pal
+    @PostMapping("/{id}/type")
+    public ResponseEntity<PalDTO> addTypeToPal(@PathVariable Long id, @RequestBody String type) {
+    Pal updatedPal = palService.addTypeToPal(id, type);
+    return ResponseEntity.ok(DTOMapper.mapToDTO(updatedPal)); 
+}
+    //get types d'un pal
+    @GetMapping("/{id}/types")
+    public ResponseEntity<List<String>> getPalTypes(@PathVariable Long id) {
+    List<String> types = palService.getPalTypes(id);
+    return ResponseEntity.ok(types);
+}
+
 }

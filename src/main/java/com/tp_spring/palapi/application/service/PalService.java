@@ -1,7 +1,6 @@
 package com.tp_spring.palapi.application.service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -10,15 +9,18 @@ import com.tp_spring.palapi.application.dto.PalDTO;
 import com.tp_spring.palapi.domain.Pal;
 import com.tp_spring.palapi.domain.Skill;
 import com.tp_spring.palapi.infrastructure.repository.PalRepository;
+import com.tp_spring.palapi.infrastructure.repository.SkillRepository;
 import com.tp_spring.palapi.infrastructure.tools.DTOMapper;
 
 @Service
 public class PalService {
 
     private PalRepository palRepository;
+    private SkillRepository skillRepository;
 
-    public PalService(PalRepository _palRepository) {
+    public PalService(PalRepository _palRepository,SkillRepository _skillRepository) {
         this.palRepository = _palRepository;
+        this.skillRepository = _skillRepository;
     }
 
     public List<PalDTO> getAllPals() {
@@ -55,9 +57,19 @@ public class PalService {
         return pal.getSkills();
     }
 
-    public void AddPalSkill(Pal pal, Skill skill){
+    public Skill addSkillToPal(Long palId, Skill skill) {
+        Pal pal = palRepository.findById(palId)
+                .orElseThrow(() -> new RuntimeException("Pal not found with ID: " + palId));
+
+        skillRepository.save(skill); // Sauvegarde initiale pour générer un ID
+
         pal.getSkills().add(skill);
+        palRepository.save(pal);
+
+        return skill;
     }
+    
+
 
     public void updatePalSkill(Pal pal, Skill oldSkill, Skill newSkill) {
         List<Skill> skills = pal.getSkills();
@@ -80,9 +92,18 @@ public class PalService {
         return pal.getTypes();
     }
 
-    public void AddPalType(Pal pal, String type){   
-        pal.getTypes().add(type);
+    public Pal addTypeToPal(Long palId, String type) {
+        Pal pal = palRepository.findById(palId)
+                .orElseThrow(() -> new RuntimeException("Pal not found with ID: " + palId));
+    
+        if (!pal.getTypes().contains(type)) {
+            pal.getTypes().add(type);
+            palRepository.save(pal);
+        }
+    
+        return pal;
     }
+    
 
     public void RemovePalType(Pal pal, String type){
             pal.getTypes().remove(type);
@@ -92,8 +113,11 @@ public class PalService {
         return palRepository.findAllSortedByPrice();
     }
 
-    public List<Pal> getAllPalsSortedByRarity() {
-        return palRepository.findAllSortedByRarity();
-    }    
+    public List<String> getPalTypes(Long palId) {
+        Pal pal = palRepository.findById(palId)
+                .orElseThrow(() -> new RuntimeException("Pal not found with ID: " + palId));
+        return pal.getTypes();
+    }
+    
     
 }
