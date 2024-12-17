@@ -1,6 +1,7 @@
 package com.tp_spring.palapi.web;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -72,9 +73,14 @@ public class PalController {
 
     //a corriger
     @GetMapping("/sorted/rarity")
-    public ResponseEntity<List<Pal>> getAllPalsSortedByRarity() {
-        return ResponseEntity.ok(palService.getAllPalsSortedByRarity());
-    }
+    public ResponseEntity<List<PalDTO>> getAllPalsSortedByRarity() {
+    List<Pal> pals = palService.getAllPalsSortedByRarity();
+    List<PalDTO> palDTOs = pals.stream()
+                               .map(DTOMapper::mapToDTO)
+                               .collect(Collectors.toList());
+    return ResponseEntity.ok(palDTOs);
+}
+
     
     //add skill a un pal
     @PostMapping("/{id}/skill")
