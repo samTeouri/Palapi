@@ -31,6 +31,9 @@ public class Skill {
         this.power = power;
         this.description = description;
     }
+    public long getId(){
+        return id;
+    }
     
     public int getLevel() {
         return level;

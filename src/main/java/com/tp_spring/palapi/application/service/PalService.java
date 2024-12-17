@@ -82,11 +82,6 @@ public class PalService {
         }
     }
     
-    public void updatePalSkillAndSave(Pal pal, Skill oldSkill, Skill newSkill) {
-        updatePalSkill(pal, oldSkill, newSkill);
-        palRepository.save(pal);
-    }
-    
 
     public List<String> getPalTypes(Pal pal){
         return pal.getTypes();
@@ -117,6 +112,28 @@ public class PalService {
         Pal pal = palRepository.findById(palId)
                 .orElseThrow(() -> new RuntimeException("Pal not found with ID: " + palId));
         return pal.getTypes();
+    }
+    
+    public Skill updateSkillOfPal(Long palId, Long skillId, Skill updatedSkill) {
+        Pal pal = palRepository.findById(palId)
+                .orElseThrow(() -> new RuntimeException("Pal not found with ID: " + palId));
+    
+        Skill existingSkill = pal.getSkills().stream()
+                .filter(skill -> skill.getId().equals(skillId))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Skill not found with ID: " + skillId));
+    
+        // Mise à jour des propriétés
+        existingSkill.setName(updatedSkill.getName());
+        existingSkill.setLevel(updatedSkill.getLevel());
+        existingSkill.setType(updatedSkill.getType());
+        existingSkill.setCooldown(updatedSkill.getCooldown());
+        existingSkill.setPower(updatedSkill.getPower());
+        existingSkill.setDescription(updatedSkill.getDescription());
+    
+        // Sauvegarde dans le repository
+        skillRepository.save(existingSkill);
+        return existingSkill;
     }
     
     
