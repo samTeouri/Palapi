@@ -13,10 +13,10 @@ public interface PalRepository extends JpaRepository<Pal, Long> {
     List<Pal> findByName(String name);
     List<Pal> findByTypes(List<String> type);
 
-    @Query("SELECT p FROM Pal p ORDER BY p.price ASC")
+    @Query("SELECT * FROM pals ORDER BY price ASC")
     List<Pal> findAllSortedByPrice();
 
-    @Query("SELECT p FROM Pal p ORDER BY p.rarity ASC")
+    @Query("SELECT * FROM pals ORDER BY rarity ASC") 
     List<Pal> findAllSortedByRarity();
 
 }

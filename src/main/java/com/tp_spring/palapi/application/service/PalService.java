@@ -108,6 +108,10 @@ public class PalService {
         return palRepository.findAllSortedByPrice();
     }
 
+    public List<Pal> getAllPalsSortedByRarity() {
+        return palRepository.findAllSortedByRarity();
+    }
+
     public List<String> getPalTypes(Long palId) {
         Pal pal = palRepository.findById(palId)
                 .orElseThrow(() -> new RuntimeException("Pal not found with ID: " + palId));
