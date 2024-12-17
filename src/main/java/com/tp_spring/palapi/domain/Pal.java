@@ -23,7 +23,7 @@ public class Pal {
     
     private String cle;
 
-    @Column(insertable=false, updatable=false)
+    @Column(insertable=true, updatable=true)
     private String name;
     
     private String wiki;

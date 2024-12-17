@@ -118,10 +118,12 @@ public class PalService {
         Pal pal = palRepository.findById(palId)
                 .orElseThrow(() -> new RuntimeException("Pal not found with ID: " + palId));
     
-        Skill existingSkill = pal.getSkills().stream()
-                .filter(skill -> skill.getId().equals(skillId))
-                .findFirst()
-                .orElseThrow(() -> new RuntimeException("Skill not found with ID: " + skillId));
+            Skill existingSkill = pal.getSkills().stream()
+            .filter(skill -> skill.getId() == skillId) // Use == instead of .equals()
+            .findFirst()
+            .orElseThrow(() -> new RuntimeException("Skill not found with ID: " + skillId));
+        
+        
     
         // Mise à jour des propriétés
         existingSkill.setName(updatedSkill.getName());
