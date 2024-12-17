@@ -48,9 +48,10 @@ public class PalController {
 
     //get pals par type (a coriger)
     @GetMapping("/type/{type}")
-    public ResponseEntity<List<PalDTO>> getPalsByTypes(@PathVariable List<String> types) {
-        return ResponseEntity.ok(palService.getPalsByTypes(types));
-    }
+public ResponseEntity<List<PalDTO>> getPalsByType(@PathVariable String type) {
+    List<PalDTO> palDTOs = palService.getPalsByType(type);  // Appel à la méthode du service
+    return ResponseEntity.ok(palDTOs);
+}
 
     //save new pal
     @PostMapping
