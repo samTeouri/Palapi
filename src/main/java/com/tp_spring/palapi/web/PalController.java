@@ -102,7 +102,7 @@ public class PalController {
     return ResponseEntity.ok(types);
 }
 
-  @PutMapping("/{palId}/skills/{skillId}")
+    @PutMapping("/{palId}/skills/{skillId}")
     public ResponseEntity<Skill> updateSkill(
             @PathVariable Long palId,
             @PathVariable Long skillId,
