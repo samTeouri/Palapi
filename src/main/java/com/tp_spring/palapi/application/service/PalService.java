@@ -121,11 +121,11 @@ public class PalService {
     public Skill updateSkillOfPal(Long palId, Long skillId, Skill updatedSkill) {
         Pal pal = palRepository.findById(palId)
                 .orElseThrow(() -> new RuntimeException("Pal not found with ID: " + palId));
-    
+        
         Skill existingSkill = pal.getSkills().stream()
-                .filter(skill -> skill.getId() == skillId)
-                .findFirst()
-                .orElseThrow(() -> new RuntimeException("Skill not found with ID: " + skillId));
+            .filter(skill -> skill.getId() == skillId) // Use == instead of .equals()
+            .findFirst()
+            .orElseThrow(() -> new RuntimeException("Skill not found with ID: " + skillId));
     
         // Mise à jour des propriétés
         existingSkill.setName(updatedSkill.getName());

@@ -1,6 +1,9 @@
 package com.tp_spring.palapi.domain;
 
+import jakarta.persistence.Column;
+
 public class Aura {
+    @Column(name="aura_name")
     private String name;
     private String description;
     private String tech;

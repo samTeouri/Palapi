@@ -24,7 +24,7 @@ public class Pal implements Serializable {
     
     private String cle;
 
-    @Column(insertable=false, updatable=false)
+    @Column(insertable=true, updatable=true)
     private String name;
     
     private String wiki;
