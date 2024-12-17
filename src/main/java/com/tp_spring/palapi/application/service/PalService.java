@@ -49,7 +49,7 @@ public class PalService {
 
     public PalDTO createPal(PalDTO palDTO) {
         Pal pal = DTOMapper.mapToEntity(palDTO);
-        pal = palRepository.save(pal);
+        palRepository.save(pal);
         return palDTO;
     }
 
@@ -108,6 +108,10 @@ public class PalService {
         return palRepository.findAllSortedByPrice();
     }
 
+    public List<Pal> getAllPalsSortedByRarity() {
+        return palRepository.findAllSortedByRarity();
+    }
+
     public List<String> getPalTypes(Long palId) {
         Pal pal = palRepository.findById(palId)
                 .orElseThrow(() -> new RuntimeException("Pal not found with ID: " + palId));
@@ -119,7 +123,7 @@ public class PalService {
                 .orElseThrow(() -> new RuntimeException("Pal not found with ID: " + palId));
     
         Skill existingSkill = pal.getSkills().stream()
-                .filter(skill -> skill.getId().equals(skillId))
+                .filter(skill -> skill.getId() == skillId)
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("Skill not found with ID: " + skillId));
     

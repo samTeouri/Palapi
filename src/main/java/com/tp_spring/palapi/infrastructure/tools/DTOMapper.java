@@ -6,7 +6,6 @@ import com.tp_spring.palapi.application.dto.PalDTO;
 import com.tp_spring.palapi.domain.Aura;
 import com.tp_spring.palapi.domain.Maps;
 import com.tp_spring.palapi.domain.Pal;
-import com.tp_spring.palapi.domain.Skill;
 import com.tp_spring.palapi.domain.Stats;
 import com.tp_spring.palapi.domain.Suitability;
 
@@ -23,7 +22,8 @@ public class DTOMapper {
             pal.getTypes(),
             pal.getRarity(),
             pal.getPrice(),
-            pal.getSize()
+            pal.getSize(),
+            pal.getSkills()
         );
     }
 
@@ -34,9 +34,9 @@ public class DTOMapper {
         pal.setRarity(palDTO.getRarity());
         pal.setPrice(palDTO.getPrice());
         pal.setSize(palDTO.getSize());
+        pal.setSkills(palDTO.getSkills());
 
         pal.setDrops(new ArrayList<String>());
-        pal.setSkills(new ArrayList<Skill>());
         pal.setSuitability(new ArrayList<Suitability>());
         pal.setStats(new Stats());
         pal.setAura(new Aura());
@@ -47,6 +47,7 @@ public class DTOMapper {
         pal.setAsset(null);
         pal.setGenus(null);
         pal.setMaps(new Maps());
+
         return pal;
     }
 }
