@@ -2,6 +2,8 @@ package com.tp_spring.palapi.application.dto;
 
 import java.util.List;
 
+import com.tp_spring.palapi.domain.Skill;
+
 public class PalDTO {
     private Long id;
     private String name;
@@ -9,19 +11,21 @@ public class PalDTO {
     private int rarity;
     private Double price;
     private String size;
+    private List<Skill> skills;
 
     // Constructeur sans arguments
     public PalDTO() {
     }
 
     // Constructeur avec tous les arguments
-    public PalDTO(Long id, String name, List<String> types, int rarity, Double price, String size) {
+    public PalDTO(Long id, String name, List<String> types, int rarity, Double price, String size, List<Skill> skills) {
         this.id = id;
         this.name = name;
         this.types = types;
         this.rarity = rarity;
         this.price = price;
         this.size = size;
+        this.skills = skills;
     }
 
     // Getters et Setters
@@ -71,5 +75,13 @@ public class PalDTO {
 
     public void setSize(String size) {
         this.size = size;
+    }
+
+    public List<Skill> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(List<Skill> skills) {
+        this.skills = skills;
     }
 }
