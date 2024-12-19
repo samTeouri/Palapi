@@ -41,15 +41,7 @@ public class PalService {
                 .collect(Collectors.toList());
     }
 
-    public List<PalDTO> getPalsByType(String type) {
-        List<Pal> pals = palRepository.findByTypesContaining(type);  // Appel au repository
-        return pals.stream()
-                   .map(DTOMapper::mapToDTO)
-                   .collect(Collectors.toList());
-    }
     
-    
-
     public PalDTO createPal(PalDTO palDTO) {
         Pal pal = DTOMapper.mapToEntity(palDTO);
         palRepository.save(pal);
@@ -143,5 +135,10 @@ public class PalService {
         return existingSkill;
     }
     
+    /*public List<PalDTO> getPalsByType(String type) {
+        return palRepository.findByType(type).stream()
+                .map(DTOMapper::mapToDTO)
+                .collect(Collectors.toList());
+    }*/
     
 }

@@ -46,12 +46,6 @@ public class PalController {
         return ResponseEntity.ok(palService.getPalsByName(name));
     }
 
-    //get pals par type (a coriger)
-    @GetMapping("/type/{type}")
-public ResponseEntity<List<PalDTO>> getPalsByType(@PathVariable String type) {
-    List<PalDTO> palDTOs = palService.getPalsByType(type);  // Appel à la méthode du service
-    return ResponseEntity.ok(palDTOs);
-}
 
     //save new pal
     @PostMapping
@@ -66,13 +60,11 @@ public ResponseEntity<List<PalDTO>> getPalsByType(@PathVariable String type) {
     return ResponseEntity.ok(palService.getPalSkills(pal));
     }
 
-    //a corriger
     @GetMapping("/sorted/price")
     public ResponseEntity<List<Pal>> getAllPalsSortedByPrice() {
         return ResponseEntity.ok(palService.getAllPalsSortedByPrice());
     }
 
-    //a corriger
     @GetMapping("/sorted/rarity")
     public ResponseEntity<List<PalDTO>> getAllPalsSortedByRarity() {
     List<Pal> pals = palService.getAllPalsSortedByRarity();
@@ -111,5 +103,10 @@ public ResponseEntity<List<PalDTO>> getPalsByType(@PathVariable String type) {
         Skill skill = palService.updateSkillOfPal(palId, skillId, updatedSkill);
         return ResponseEntity.ok(skill);
     }
+    /*@GetMapping("/type/{type}")
+    public ResponseEntity<List<PalDTO>> getPalsByType(@PathVariable String type) {
+        return ResponseEntity.ok(palService.getPalsByType(type));
+    }*/
+
 }
 
