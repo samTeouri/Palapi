@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,27 +30,28 @@ public class PalController {
     }
 
 
+    // Get all pals
     @GetMapping
     public ResponseEntity<List<PalDTO>> getAllPals() {
         return ResponseEntity.ok(palService.getAllPals());
     }
 
-    //get pal par id
+    //get pal by id
     @GetMapping("/{id}")
     public ResponseEntity<PalDTO> getPalById(@PathVariable Long id) {
         return ResponseEntity.ok(palService.getPalById(id));
     }
 
-    //get pal par name
+    //get pal by name
     @GetMapping("/name/{name}")
     public ResponseEntity<List<PalDTO>> getPalsByName(@PathVariable String name) {
         return ResponseEntity.ok(palService.getPalsByName(name));
     }
 
-    //get pals par type (a coriger)
+    //get pals by type
     @GetMapping("/type/{type}")
-    public ResponseEntity<List<PalDTO>> getPalsByTypes(@PathVariable List<String> types) {
-        return ResponseEntity.ok(palService.getPalsByTypes(types));
+    public ResponseEntity<List<PalDTO>> getPalsByType(@PathVariable String type) {
+        return ResponseEntity.ok(palService.getPalsByType(type));
     }
 
     //save new pal
@@ -65,21 +67,25 @@ public class PalController {
     return ResponseEntity.ok(palService.getPalSkills(pal));
     }
 
-    //a corriger
+    // Get all pals sorted by price
     @GetMapping("/sorted/price")
-    public ResponseEntity<List<Pal>> getAllPalsSortedByPrice() {
-        return ResponseEntity.ok(palService.getAllPalsSortedByPrice());
+    public ResponseEntity<List<PalDTO>> getAllPalsSortedByPrice() {
+        List<Pal> pals = palService.getAllPalsSortedByPrice();
+        List<PalDTO> palDTOs = pals.stream()
+                                .map(DTOMapper::mapToDTO)
+                                .collect(Collectors.toList());
+        return ResponseEntity.ok(palDTOs);
     }
 
-    //a corriger
+    // Get all pals sorted by rarity
     @GetMapping("/sorted/rarity")
     public ResponseEntity<List<PalDTO>> getAllPalsSortedByRarity() {
-    List<Pal> pals = palService.getAllPalsSortedByRarity();
-    List<PalDTO> palDTOs = pals.stream()
-                               .map(DTOMapper::mapToDTO)
-                               .collect(Collectors.toList());
-    return ResponseEntity.ok(palDTOs);
-}
+        List<Pal> pals = palService.getAllPalsSortedByRarity();
+        List<PalDTO> palDTOs = pals.stream()
+                                .map(DTOMapper::mapToDTO)
+                                .collect(Collectors.toList());
+        return ResponseEntity.ok(palDTOs);
+    }
 
     
     //add skill a un pal
@@ -92,15 +98,22 @@ public class PalController {
     //add types d'un pal
     @PostMapping("/{id}/type")
     public ResponseEntity<PalDTO> addTypeToPal(@PathVariable Long id, @RequestBody String type) {
-    Pal updatedPal = palService.addTypeToPal(id, type);
-    return ResponseEntity.ok(DTOMapper.mapToDTO(updatedPal)); 
-}
+        Pal updatedPal = palService.addTypeToPal(id, type);
+        return ResponseEntity.ok(DTOMapper.mapToDTO(updatedPal)); 
+    }
     //get types d'un pal
     @GetMapping("/{id}/types")
     public ResponseEntity<List<String>> getPalTypes(@PathVariable Long id) {
-    List<String> types = palService.getPalTypes(id);
-    return ResponseEntity.ok(types);
-}
+        List<String> types = palService.getPalTypes(id);
+        return ResponseEntity.ok(types);
+    }
+
+    //remove type d'un pal
+    @PostMapping("/{id}/types")
+    public ResponseEntity<PalDTO> removePalType(@PathVariable Long id, @RequestBody String type) {
+        Pal pal = palService.removeTypeFromPal(id, type);
+        return ResponseEntity.ok(DTOMapper.mapToDTO(pal));
+    }
 
     @PutMapping("/{palId}/skills/{skillId}")
     public ResponseEntity<Skill> updateSkill(

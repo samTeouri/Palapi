@@ -1,5 +1,6 @@
 package com.tp_spring.palapi.application.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,8 +42,8 @@ public class PalService {
                 .collect(Collectors.toList());
     }
 
-    public List<PalDTO> getPalsByTypes(List<String> types) {
-        return palRepository.findByTypes(types).stream()
+    public List<PalDTO> getPalsByType(String type) {
+        return palRepository.findByType(type).stream()
                 .map(pal -> DTOMapper.mapToDTO(pal))
                 .collect(Collectors.toList());
     }
@@ -98,10 +99,16 @@ public class PalService {
     
         return pal;
     }
-    
 
-    public void RemovePalType(Pal pal, String type){
-            pal.getTypes().remove(type);
+    public Pal removeTypeFromPal(Long palId, String type) {
+        Pal pal = palRepository.findById(palId).orElseThrow(() -> new RuntimeException("Pal not found with ID: " + palId));
+    
+        
+        int typeIndex = pal.getTypes().indexOf(type);
+        pal.getTypes().remove(typeIndex);
+        palRepository.save(pal);
+    
+        return pal;
     }
 
     public List<Pal> getAllPalsSortedByPrice() {
