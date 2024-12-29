@@ -30,24 +30,25 @@ public class PalController {
     }
 
 
+    // Get all pals
     @GetMapping
     public ResponseEntity<List<PalDTO>> getAllPals() {
         return ResponseEntity.ok(palService.getAllPals());
     }
 
-    //get pal par id
+    //get pal by id
     @GetMapping("/{id}")
     public ResponseEntity<PalDTO> getPalById(@PathVariable Long id) {
         return ResponseEntity.ok(palService.getPalById(id));
     }
 
-    //get pal par name
+    //get pal by name
     @GetMapping("/name/{name}")
     public ResponseEntity<List<PalDTO>> getPalsByName(@PathVariable String name) {
         return ResponseEntity.ok(palService.getPalsByName(name));
     }
 
-    //get pals par type (a coriger)
+    //get pals by type
     @GetMapping("/type/{type}")
     public ResponseEntity<List<PalDTO>> getPalsByType(@PathVariable String type) {
         return ResponseEntity.ok(palService.getPalsByType(type));
@@ -66,13 +67,17 @@ public class PalController {
     return ResponseEntity.ok(palService.getPalSkills(pal));
     }
 
-    //a corriger
+    // Get all pals sorted by price
     @GetMapping("/sorted/price")
-    public ResponseEntity<List<Pal>> getAllPalsSortedByPrice() {
-        return ResponseEntity.ok(palService.getAllPalsSortedByPrice());
+    public ResponseEntity<List<PalDTO>> getAllPalsSortedByPrice() {
+        List<Pal> pals = palService.getAllPalsSortedByPrice();
+        List<PalDTO> palDTOs = pals.stream()
+                                .map(DTOMapper::mapToDTO)
+                                .collect(Collectors.toList());
+        return ResponseEntity.ok(palDTOs);
     }
 
-    //a corriger
+    // Get all pals sorted by rarity
     @GetMapping("/sorted/rarity")
     public ResponseEntity<List<PalDTO>> getAllPalsSortedByRarity() {
         List<Pal> pals = palService.getAllPalsSortedByRarity();
