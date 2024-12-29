@@ -11,10 +11,9 @@ import com.tp_spring.palapi.domain.Pal;
 @Repository
 public interface PalRepository extends JpaRepository<Pal, Long> {
     List<Pal> findByName(String name);
-
-    /*@Query("SELECT p FROM Pal p WHERE :type MEMBER OF p.types")
-    List<Pal> findByType(String type);*/
-
+    
+    @Query("SELECT p FROM Pal p WHERE :type MEMBER OF p.types")
+    List<Pal> findByType(String type);
 
     @Query("SELECT p FROM Pal p ORDER BY p.price ASC")
     List<Pal> findAllSortedByPrice();
