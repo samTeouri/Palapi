@@ -147,5 +147,10 @@ public class PalService {
         return existingSkill;
     }
     
+    /*public List<PalDTO> getPalsByType(String type) {
+        return palRepository.findByType(type).stream()
+                .map(DTOMapper::mapToDTO)
+                .collect(Collectors.toList());
+    }*/
     
 }

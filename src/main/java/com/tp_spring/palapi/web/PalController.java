@@ -123,5 +123,10 @@ public class PalController {
         Skill skill = palService.updateSkillOfPal(palId, skillId, updatedSkill);
         return ResponseEntity.ok(skill);
     }
+    /*@GetMapping("/type/{type}")
+    public ResponseEntity<List<PalDTO>> getPalsByType(@PathVariable String type) {
+        return ResponseEntity.ok(palService.getPalsByType(type));
+    }*/
+
 }
 

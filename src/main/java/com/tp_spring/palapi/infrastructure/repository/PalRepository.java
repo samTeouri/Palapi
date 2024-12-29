@@ -18,7 +18,9 @@ public interface PalRepository extends JpaRepository<Pal, Long> {
     @Query("SELECT p FROM Pal p ORDER BY p.price ASC")
     List<Pal> findAllSortedByPrice();
 
-    @Query("SELECT p FROM Pal p ORDER BY p.rarity ASC") 
+    @Query("SELECT p FROM Pal p ORDER BY p.rarity ASC")
     List<Pal> findAllSortedByRarity();
+
+
 
 }
