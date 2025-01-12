@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.tp_spring.palapi.domain.Pal;
 
 @Repository
-public interface PalRepository extends JpaRepository<Pal, Long> {
+public interface PalRepository extends JpaRepository<Pal, Integer> {
     List<Pal> findByName(String name);
     
     @Query("SELECT p FROM Pal p WHERE :type MEMBER OF p.types")
