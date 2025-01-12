@@ -22,7 +22,7 @@ import jakarta.persistence.Table;
 public class Pal implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     
     private String cle;
 
@@ -109,7 +109,7 @@ public class Pal implements Serializable {
     }
 
     // Getters and Setters
-    public Long getId() {
+    public int getId() {
         return this.id;
     }
 

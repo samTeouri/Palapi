@@ -1,6 +1,5 @@
 package com.tp_spring.palapi.application.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,7 +29,7 @@ public class PalService {
                 .collect(Collectors.toList());
     }
 
-    public PalDTO getPalById(Long id) {
+    public PalDTO getPalById(int id) {
         Pal pal = palRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Pal not found"));
         return DTOMapper.mapToDTO(pal);
@@ -58,7 +57,7 @@ public class PalService {
         return pal.getSkills();
     }
 
-    public Skill addSkillToPal(Long palId, Skill skill) {
+    public Skill addSkillToPal(int palId, Skill skill) {
         Pal pal = palRepository.findById(palId)
                 .orElseThrow(() -> new RuntimeException("Pal not found with ID: " + palId));
 
@@ -88,7 +87,7 @@ public class PalService {
         return pal.getTypes();
     }
 
-    public Pal addTypeToPal(Long palId, String type) {
+    public Pal addTypeToPal(int palId, String type) {
         Pal pal = palRepository.findById(palId)
                 .orElseThrow(() -> new RuntimeException("Pal not found with ID: " + palId));
     
@@ -100,7 +99,7 @@ public class PalService {
         return pal;
     }
 
-    public Pal removeTypeFromPal(Long palId, String type) {
+    public Pal removeTypeFromPal(int palId, String type) {
         Pal pal = palRepository.findById(palId).orElseThrow(() -> new RuntimeException("Pal not found with ID: " + palId));
     
         
@@ -119,18 +118,18 @@ public class PalService {
         return palRepository.findAllSortedByRarity();
     }
 
-    public List<String> getPalTypes(Long palId) {
+    public List<String> getPalTypes(int palId) {
         Pal pal = palRepository.findById(palId)
                 .orElseThrow(() -> new RuntimeException("Pal not found with ID: " + palId));
         return pal.getTypes();
     }
     
-    public Skill updateSkillOfPal(Long palId, Long skillId, Skill updatedSkill) {
+    public Skill updateSkillOfPal(int palId, int skillId, Skill updatedSkill) {
         Pal pal = palRepository.findById(palId)
                 .orElseThrow(() -> new RuntimeException("Pal not found with ID: " + palId));
         
         Skill existingSkill = pal.getSkills().stream()
-            .filter(skill -> skill.getId() == skillId) // Use == instead of .equals()
+            .filter(skill -> skill.getId() == skillId)
             .findFirst()
             .orElseThrow(() -> new RuntimeException("Skill not found with ID: " + skillId));
     
@@ -146,11 +145,5 @@ public class PalService {
         skillRepository.save(existingSkill);
         return existingSkill;
     }
-    
-    /*public List<PalDTO> getPalsByType(String type) {
-        return palRepository.findByType(type).stream()
-                .map(DTOMapper::mapToDTO)
-                .collect(Collectors.toList());
-    }*/
     
 }

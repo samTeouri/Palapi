@@ -5,7 +5,7 @@ import java.util.List;
 import com.tp_spring.palapi.domain.Skill;
 
 public class PalDTO {
-    private Long id;
+    private int id;
     private String name;
     private List<String> types;
     private int rarity;
@@ -18,7 +18,7 @@ public class PalDTO {
     }
 
     // Constructeur avec tous les arguments
-    public PalDTO(Long id, String name, List<String> types, int rarity, Double price, String size, List<Skill> skills) {
+    public PalDTO(int id, String name, List<String> types, int rarity, Double price, String size, List<Skill> skills) {
         this.id = id;
         this.name = name;
         this.types = types;
@@ -29,11 +29,11 @@ public class PalDTO {
     }
 
     // Getters et Setters
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

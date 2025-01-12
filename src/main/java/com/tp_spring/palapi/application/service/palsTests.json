@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "key": "001",
+    "image": "/public/images/paldeck/001.png",
+    "name": "Lamball",
+    "wiki": "https://palworld.fandom.com/wiki/Lamball",
+    "types": ["neutral"],
+    "imageWiki": "https://static.wikia.nocookie.net/palworld/images/0/01/Lamball_menu.png/",
+    "suitability": [
+      {
+        "type": "handiwork",
+        "image": "/public/images/works/handiwork.png",
+        "level": 1
+      },
+      {
+        "type": "transporting",
+        "image": "/public/images/works/transporting.png",
+        "level": 1
+      },
+      {
+        "type": "farming",
+        "image": "/public/images/works/farming.png",
+        "level": 1
+      }
+    ],
+    "drops": ["wool", "lamball_mutton"],
+    "aura": {
+      "name": "fluffy_shield",
+      "description": "When activated, equips to the player and becomes a shield.\nSometimes drops Wool when assigned to Ranch.",
+      "tech": null
+    },
+    "description": "A walk up a hill tends to end with this Pal tumbling back down. This causes it to become dizzy and unable to move, making it easy to capture and kill. As a result, this pal has tumbled down to the very bottom of the food chain itself.",
+    "skills": [
+      {
+        "level": 1,
+        "name": "roly_poly",
+        "type": "neutral",
+        "cooldown": 1,
+        "power": 35,
+        "description": "Lamball's special skill. Curls into a ball, rolling after any enemies in its way. Becomes dizzy and unable to move after the attack ends.\n"
+      }
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": {
+        "melee": 70,
+        "ranged": 70
+      },
+      "defense": 70,
+      "speed": {
+        "ride": 550,
+        "run": 400,
+        "walk": 40
+      },
+      "stamina": 100,
+      "support": 100,
+      "food": 2
+    },
+    "asset": "SheepBall",
+    "genus": "humanoid",
+    "rarity": 1,
+    "price": 1000,
+    "size": "xs",
+    "maps": {
+      "day": "/public/images/maps/001-day.png",
+      "night": "/public/images/maps/001-night.png"
+    }
+  },
+  {
+    "id": 2,
+    "key": "002",
+    "image": "/public/images/paldeck/002.png",
+    "name": "Flamond",
+    "wiki": "https://palworld.fandom.com/wiki/Flamond",
+    "types": ["fire"],
+    "imageWiki": "https://static.wikia.nocookie.net/palworld/images/0/02/Flamond_menu.png/",
+    "suitability": [
+      {
+        "type": "combat",
+        "image": "/public/images/works/combat.png",
+        "level": 2
+      }
+    ],
+    "drops": ["fire_crystal"],
+    "aura": {
+      "name": "heat_shield",
+      "description": "Provides warmth and immunity to frost effects.",
+      "tech": null
+    },
+    "description": "A fiery companion with a temper to match.",
+    "skills": [
+      {
+        "level": 1,
+        "name": "ember",
+        "type": "fire",
+        "cooldown": 2,
+        "power": 30,
+        "description": "Shoots a small burst of fire."
+      }
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": {
+        "melee": 60,
+        "ranged": 80
+      },
+      "defense": 50,
+      "speed": {
+        "ride": 500,
+        "run": 350,
+        "walk": 30
+      },
+      "stamina": 120,
+      "support": 80,
+      "food": 3
+    },
+    "asset": "FireFox",
+    "genus": "beast",
+    "rarity": 2,
+    "price": 1500,
+    "size": "s",
+    "maps": {
+      "day": "/public/images/maps/002-day.png",
+      "night": "/public/images/maps/002-night.png"
+    }
+  },
+  {
+    "id": 3,
+    "key": "003",
+    "image": "/public/images/paldeck/003.png",
+    "name": "Aquabat",
+    "wiki": "https://palworld.fandom.com/wiki/Aquabat",
+    "types": ["water"],
+    "imageWiki": "https://static.wikia.nocookie.net/palworld/images/0/03/Aquabat_menu.png/",
+    "suitability": [
+      {
+        "type": "exploration",
+        "image": "/public/images/works/exploration.png",
+        "level": 3
+      }
+    ],
+    "drops": ["water_crystal"],
+    "aura": {
+      "name": "bubble_shield",
+      "description": "Forms a protective bubble around itself.",
+      "tech": null
+    },
+    "description": "A swift swimmer, known for its agility in water.",
+    "skills": [
+      {
+        "level": 1,
+        "name": "splash",
+        "type": "water",
+        "cooldown": 1,
+        "power": 20,
+        "description": "Splashes water to douse flames."
+      }
+    ],
+    "stats": {
+      "hp": 90,
+      "attack": {
+        "melee": 50,
+        "ranged": 90
+      },
+      "defense": 60,
+      "speed": {
+        "ride": 600,
+        "run": 300,
+        "walk": 50
+      },
+      "stamina": 110,
+      "support": 90,
+      "food": 4
+    },
+    "asset": "WaterBird",
+    "genus": "bird",
+    "rarity": 3,
+    "price": 2000,
+    "size": "m",
+    "maps": {
+      "day": "/public/images/maps/003-day.png",
+      "night": "/public/images/maps/003-night.png"
+    }
+  },
+  {
+    "id": 4,
+    "key": "004",
+    "image": "/public/images/paldeck/004.png",
+    "name": "Rockox",
+    "wiki": "https://palworld.fandom.com/wiki/Rockox",
+    "types": ["earth"],
+    "imageWiki": "https://static.wikia.nocookie.net/palworld/images/0/04/Rockox_menu.png/",
+    "suitability": [
+      {
+        "type": "construction",
+        "image": "/public/images/works/construction.png",
+        "level": 4
+      }
+    ],
+    "drops": ["stone_crystal"],
+    "aura": {
+      "name": "earth_armor",
+      "description": "Boosts defense and resistance to attacks.",
+      "tech": null
+    },
+    "description": "A rugged companion with unmatched durability.",
+    "skills": [
+      {
+        "level": 1,
+        "name": "stone_throw",
+        "type": "earth",
+        "cooldown": 3,
+        "power": 40,
+        "description": "Hurls a stone at the enemy."
+      }
+    ],
+    "stats": {
+      "hp": 120,
+      "attack": {
+        "melee": 70,
+        "ranged": 40
+      },
+      "defense": 100,
+      "speed": {
+        "ride": 400,
+        "run": 200,
+        "walk": 20
+      },
+      "stamina": 130,
+      "support": 60,
+      "food": 5
+    },
+    "asset": "RockOx",
+    "genus": "beast",
+    "rarity": 4,
+    "price": 2500,
+    "size": "l",
+    "maps": {
+      "day": "/public/images/maps/004-day.png",
+      "night": "/public/images/maps/004-night.png"
+    }
+  },
+  {
+    "id": 5,
+    "key": "005",
+    "image": "/public/images/paldeck/005.png",
+    "name": "Zephyron",
+    "wiki": "https://palworld.fandom.com/wiki/Zephyron",
+    "types": ["air"],
+    "imageWiki": "https://static.wikia.nocookie.net/palworld/images/0/05/Zephyron_menu.png/",
+    "suitability": [
+      {
+        "type": "scouting",
+        "image": "/public/images/works/scouting.png",
+        "level": 5
+      }
+    ],
+    "drops": ["feather"],
+    "aura": {
+      "name": "wind_barrier",
+      "description": "Creates a barrier of wind that deflects projectiles.",
+      "tech": null
+    },
+    "description": "A swift and majestic flyer.",
+    "skills": [
+      {
+        "level": 1,
+        "name": "gust",
+        "type": "air",
+        "cooldown": 1,
+        "power": 30,
+        "description": "Generates a gust of wind to knock enemies back."
+      }
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": {
+        "melee": 50,
+        "ranged": 90
+      },
+      "defense": 50,
+      "speed": {
+        "ride": 700,
+        "run": 500,
+        "walk": 60
+      },
+      "stamina": 140,
+      "support": 50,
+      "food": 1
+    },
+    "asset": "SkyBird",
+    "genus": "avian",
+    "rarity": 5,
+    "price": 3000,
+    "size": "m",
+    "maps": {
+      "day": "/public/images/maps/005-day.png",
+      "night": "/public/images/maps/005-night.png"
+    }
+  } 
+]
